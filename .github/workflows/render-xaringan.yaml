@@ -45,6 +45,7 @@ jobs:
 
       - name: Install packages
         run: |
+          updateR()
           install.packages("rmarkdown")
           install.packages("xarigan")
           install.packages("xaringanthemer")
