@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       REPO_NAME: "https://packagemanager.rstudio.com/all/__linux__/focal/latest"
@@ -51,6 +51,7 @@ jobs:
 
       - name: Render Rmarkdown files
         run: |
+          install.packages("xarigan")
           rmarkdown::render("presentations/FOSS4G2021_presentation.Rmd")
           file.copy("presentations/FOSS4G2021_presentation.html", ".", recursive = TRUE)
           writeLines("!*.html\n!*.pdf\n!*_files/", "public/FOSS4G2021/.gitignore")
